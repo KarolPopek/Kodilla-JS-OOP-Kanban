@@ -39,7 +39,7 @@ $(function() {
 		$('.column-card-list').sortable(
 		{
 			connectWith: '.column-card-list',
-			placeholder: 'card-placeholder'
+			placeholder: '.card-placeholder'
 		}).disableSelection();
 	}
 	
@@ -133,9 +133,11 @@ $(function() {
 	board.addColumn(doneColumn);
 
 	var card1 = new Card('Nowe zadanie');
-	var card2 = new Card('Stworzyc tablice kanban');
+	var card2 = new Card('Stworzyc tablice');
+	var card3 = new Card('Zakończone');
 
 	todoColumn.addCard(card1);
 	doingColumn.addCard(card2);
+	doneColumn.addCard(card3);
 	
 })
