@@ -8,16 +8,16 @@ $(function() {
 		{
 			this.$element.append(column.$element);
 			initSortable();
-			
+		
 			$('.create-column').click(function()
-			{
-				var name = prompt('Wpisz nazwę kolumny');
-				var column = new Column(name);
-				board.addColumn(column);
-			});
+				{
+					var name = prompt('Wpisz nazwę kolumny: ');
+					var column = new Column(name);
+					board.addColumn(column);
+				});	
 		},
 		
-		$element: $('#board .column-container')
+		$element: $('#board .column-container'),
 	};
 	
 	function randomString() 
@@ -39,7 +39,7 @@ $(function() {
 		$('.column-card-list').sortable(
 		{
 			connectWith: '.column-card-list',
-			placeholder: '.card-placeholder'
+			placeholder: 'card-placeholder'
 		}).disableSelection();
 	}
 	
@@ -66,7 +66,7 @@ $(function() {
 				
 				$columnAddCard.click(function() 
 				{
-					self.addCard(new Card(prompt("Wpisz nazwę karty")));
+					self.addCard(new Card(prompt("Wpisz nazwę karty: ")));
 				});
 				
 				$column.append($columnTitle)
@@ -123,21 +123,23 @@ $(function() {
 			this.$element.remove();
 		}
 	}
-
+	
+	
 	var todoColumn = new Column('Do zrobienia');
 	var doingColumn = new Column('W trakcie');
 	var doneColumn = new Column('Skończone');
 
+
 	board.addColumn(todoColumn);
+
+/*
 	board.addColumn(doingColumn);
 	board.addColumn(doneColumn);
 
 	var card1 = new Card('Nowe zadanie');
 	var card2 = new Card('Stworzyc tablice');
-	var card3 = new Card('Zakończone');
 
 	todoColumn.addCard(card1);
 	doingColumn.addCard(card2);
-	doneColumn.addCard(card3);
-	
+*/
 })
