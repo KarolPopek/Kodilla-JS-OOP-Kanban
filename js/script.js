@@ -1,25 +1,6 @@
 
 $(function() {
 	
-	var board = 
-	{
-		name: 'Tablica Kanban',
-		addColumn: function(column)
-		{
-			this.$element.append(column.$element);
-			initSortable();
-		
-			$('.create-column').click(function()
-				{
-					var name = prompt('Wpisz nazwę kolumny: ');
-					var column = new Column(name);
-					board.addColumn(column);
-				});	
-		},
-		
-		$element: $('#board .column-container'),
-	};
-	
 	function randomString() 
 	{
 		var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
@@ -43,7 +24,7 @@ $(function() {
 		}).disableSelection();
 	}
 	
-	function Column( name ) 
+	function Column(name) 
 	{
 			var self = this;
 			
@@ -125,14 +106,30 @@ $(function() {
 	}
 	
 	
+	var board = 
+	{
+		name: 'Tablica Kanban',
+		addColumn: function(column)
+		{
+			this.$element.append(column.$element);
+			initSortable();
+		},
+		$element: $('#board .column-container'),
+	};
+	
+	$('.create-column').click(function()
+	  {
+			var name = prompt('Wpisz nazwę kolumny: ');
+			var column = new Column(name);
+			board.addColumn(column);
+		}); 	
+	
+	
 	var todoColumn = new Column('Do zrobienia');
 	var doingColumn = new Column('W trakcie');
 	var doneColumn = new Column('Skończone');
 
-
 	board.addColumn(todoColumn);
-
-/*
 	board.addColumn(doingColumn);
 	board.addColumn(doneColumn);
 
@@ -141,5 +138,7 @@ $(function() {
 
 	todoColumn.addCard(card1);
 	doingColumn.addCard(card2);
-*/
-})
+
+/* git add --all && git commit -m "comment" */
+
+});
